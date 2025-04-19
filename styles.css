@@ -1,0 +1,225 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+#map-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#map-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  display: block;
+}
+#geoguesser-title {
+  font-family: "Russo One", sans-serif;
+  font-size: 4rem;
+  color: rgba(38, 29, 29, 0.9);
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+#guess-box {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+  gap: 10px;
+  align-items: center;
+  z-index: 10;
+  font-family: "Russo One", sans-serif;
+}
+#guess-box label {
+  color: white;
+  font-weight: bold;
+}
+#guess-box input[type="text"] {
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+#guess-box button {
+  padding: 8px 12px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#guess-box button:hover {
+  background-color: lavender;
+  color: black;
+}
+.player {
+  margin-bottom: 8px;
+}
+#player-name-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+}
+#player-name-box label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: lavender;
+}
+#player-name-box input[type="text"] {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid lavender;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+#player-name-box button {
+  padding: 8px 20px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#player-name-box button:hover {
+  background-color: lavender;
+  color: black;
+}
+#question-box {
+  position: absolute;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+  z-index: 100;
+  transform: translate(-50%, -100%);
+}
+.arrow-down {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(0, 0, 0, 0.5);
+}
+#high-scores {
+  position: hidden;
+  top: 69%;
+  right: 42%;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  font-family: "Russo One", sans-serif;
+}
+#high-scores-card {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: lavender;
+  text-align: center;
+}
+#high-scores-ol {
+  padding-left: 10px;
+  margin: 0;
+}
+#timer {
+  display: none;
+  position: fixed;
+  top: 5px;
+  right: 20px;
+  width: 140px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+}
+
+#ending-frame {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  font-family: "Russo One", sans-serif;
+  z-index: 200;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+#goodgame {
+  font-size: 2.5rem;
+  color: lavender;
+}
+
+#your-score-ending {
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+#restart-button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#restart-button:hover {
+  background-color: lavender;
+  color: black;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoGuesser</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="map-container">
+      <img id="map-image" src="image2.png" alt="Map" />
+      <h1 id="geoguesser-title">GeoGuesser</h1>
+      <div id="question-box">
+        <div class="box-content">What country is this?</div>
+        <div class="arrow-down"></div>
+      </div>
+    </div>
+    <div id="player-name-box">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Leeroy Jenkins..." />
+      <button id="play-button">Play</button>
+    </div>
+    <h1 id="timer">2:00</h1>
+    <div id="guess-box">
+      <label for="guess">Your Guess</label>
+      <input type="text" id="guess" placeholder="Type a country..." />
+      <button id="submit-button">Submit</button>
+    </div>
+    <div id="ending-frame">
+      <h1 id="goodgame">Good Game!</h1>
+      <h1 id="your-score-ending">Your score: 500</h1>
+      <div id="high-scores">
+        <h1 id="high-scores-card">High Scores</h1>
+        <ol id="high-scores-ol">
+          <li class="player">player : name - 500</li>
+          <li class="player">player : name - 500</li>
+          <li class="player">player : name - 500</li>
+          <li class="player">player : name - 500</li>
+          <li class="player">player : name - 500</li>
+        </ol>
+      </div>
+      <button id="restart-button">Play Again</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
