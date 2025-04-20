@@ -13,35 +13,29 @@
   <body>
     <div id="map-container">
       <img id="map-image" src="image2.png" alt="Map" />
-      <h1 id="geoguesser-title">GeoGuesser</h1>
-      <div id="question-box">
+      <h1 id="geoguesser-title" class="shared-box-styles">GeoGuesser</h1>
+      <div id="question-box" class="shared-box-styles">
         <div class="box-content">What country is this?</div>
         <div class="arrow-down"></div>
       </div>
     </div>
-    <div id="player-name-box">
+    <div id="player-name-box" class="shared-box-styles">
       <label for="name">Your Name</label>
       <input type="text" id="name" placeholder="Leeroy Jenkins..." />
       <button id="play-button">Play</button>
     </div>
-    <h1 id="timer">2:00</h1>
-    <div id="guess-box">
-      <label for="guess">Your Guess</label>
+    <div id="timer" class="shared-box-styles"></div>
+    <div id="guess-box" class="shared-box-styles">
+      <label for="guess">Guess Here!</label>
       <input type="text" id="guess" placeholder="Type a country..." />
       <button id="submit-button">Submit</button>
     </div>
-    <div id="ending-frame">
+    <div id="ending-frame" class="shared-box-styles">
       <h1 id="goodgame">Good Game!</h1>
       <h1 id="your-score-ending">Your score: 500</h1>
       <div id="high-scores">
         <h1 id="high-scores-card">High Scores</h1>
-        <ol id="high-scores-ol">
-          <li class="player">player : name - 500</li>
-          <li class="player">player : name - 500</li>
-          <li class="player">player : name - 500</li>
-          <li class="player">player : name - 500</li>
-          <li class="player">player : name - 500</li>
-        </ol>
+        <ol id="high-scores-ol"></ol>
       </div>
       <button id="restart-button">Play Again</button>
     </div>
