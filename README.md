@@ -1,25 +1,57 @@
 # GeoGuesser
 
-Guessing Countries based on their borders.
+A browser-based game made to help people work on their **memory recall**, **typing speed**, and most importantly — **geography**.
 
-Star particle affect background, using particlesJS function
+In today’s world, it’s all too easy to rely on Google or AI as a second brain. As a father, that realization hit a little harder. I wanted something simple, clean, and fun — a way to challenge focus and knowledge without distractions.  
 
-GeoGuesser title at the top using font "Enter Command" secondary font "Russo One" ultimate backup "sans-sarif
+This project started with one intention:  
+> To build a game my son could play — and learn from.  
 
-Will go through 5 guesses with a 1 minute timer.
+Whether you're here to test your map skills, push your recall under pressure, or just kill a few minutes in a meaningful way, I hope you enjoy this little project.
 
-At the end will give you a correct out of 5 statement over the screen with a game over.
-with a restart button.
+---
 
-On the right will be a transparent CSS card with highscores list 1-10 and will drop out the 10th high score once reached and continue to update the high scores.
+## What it Does
 
-on the lest a previous score saving your previous attempt.
+- You’re shown a location marker on a world map.
+- Type the country name as fast and accurately as you can.
+- You’ve got **2 minutes**. Each correct answer is worth 100 points.
+- High scores are saved locally in your browser (so you can come back and try to beat your best).
+- When the timer runs out, your final score and the leaderboard appear.
 
-every answer you get right is 100 points.
+---
 
-floating play button that starts the game and dissapears once selected.
+## How to Play
 
-NEED TO DO
-tweaks
-assign all the locations for countries and add more countries
-need to add a proper restart option to the game instead of a reload. loop back to the start I guess.
+1. Clone the repo or just [open the HTML file](#).
+2. Enter your name, hit Play.
+3. Guess countries by typing their name and pressing Enter or clicking Submit.
+4. When the game ends, you’ll see your score and the top scores so far.
+
+That’s it. No installs, no setup, no bloat.
+
+---
+
+## What’s Inside
+
+- Written in **vanilla JavaScript** using **class-based structure**
+- **LocalStorage** for high score tracking
+- Clean UI built with **HTML** and **CSS**
+- Fully keyboard accessible
+
+---
+
+## Planned Features
+
+- Add actual coordinates for more countries  
+- Clean restart (no page reload needed)  
+- Responsive layout for phones and tablets  
+
+---
+
+## Why I Made This
+
+As a dad, I think a lot about what tools and habits my kid will grow up with. I wanted to build something where improvement is visible, effort is rewarded, and learning doesn’t feel like a chore. GeoGuesser is just a first step — but it’s something I’m proud of.
+
+Thanks for checking it out.  
+— CPiggott-lab
