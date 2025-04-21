@@ -7,6 +7,7 @@ class GeoGuesserGame {
     this.score = 0;
     this.timeLeft = 29;
     this.timer = null;
+    this.feedbackTimeout = null;
 
     this.dom = {
       playButton: document.getElementById("play-button"),
@@ -25,6 +26,7 @@ class GeoGuesserGame {
       yourScoreEnding: document.getElementById("your-score-ending"),
       highScores: document.getElementById("high-scores"),
       highScoresList: document.getElementById("high-scores-ol"),
+      feedback: document.getElementById("feedback"),
     };
     this.setupListeners();
     this.showStoredHighScores();
@@ -46,16 +48,13 @@ class GeoGuesserGame {
     this.dom.guessInput.addEventListener("keydown", (e) => {
       if (e.key === "Enter") this.handleGuess();
     });
-    this.dom.restartButton.addEventListener("click", () => location.reload());
-    //need to add something new for reloading the page. Like looping back to original with no input name. just straight into startGame()
-    this.dom.restartButton.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") location.reload();
-    });
+    this.dom.restartButton.addEventListener("click", () => this.startGame());
   }
+  // startgame hides the menu, resets everything, and asks the first question. Also does the restart
   startGame() {
     const playerName = this.dom.nameInput.value.trim();
     if (!playerName) {
-      alert("PLease enter a name before starting game");
+      alert("Please enter a name before starting game");
       this.dom.nameInput.focus();
       return;
     }
@@ -64,7 +63,15 @@ class GeoGuesserGame {
     this.dom.guessBox.style.display = "flex";
     this.dom.title.style.display = "none";
     this.dom.timer.style.display = "block";
-    //starting those cards functions.
+    document.getElementById("instruction-card").style.display = "none";
+    this.dom.endingFrame.style.display = "none";
+    this.dom.highScores.style.display = "none";
+
+    this.remainingQuestions = this.shuffleQuestions();
+    this.score = 0;
+    this.timeLeft = 29;
+    this.dom.guessInput.value = "";
+
     this.startCountdown();
     this.askNextQuestion();
     this.dom.guessInput.focus();
@@ -72,9 +79,32 @@ class GeoGuesserGame {
   handleGuess() {
     const guess = this.dom.guessInput.value.trim().toLowerCase();
     if (!guess) return;
+
+    if (this.feedbackTimeout) {
+      clearTimeout(this.feedbackTimeout);
+      this.feedbackTimeout = null;
+    }
+
+    this.dom.feedback.classList.remove("correct", "wrong", "visible");
+    this.dom.feedback.style.display = "block";
+
     if (guess === this.currentQuestion.country.toLowerCase()) {
       this.score += 100;
+      this.dom.feedback.textContent = "CORRECT!";
+      this.dom.feedback.classList.add("correct");
+    } else {
+      this.dom.feedback.textContent = `Wrong... it was ${this.countryReturnAnswer(
+        this.currentQuestion.country
+      )}`;
+      this.dom.feedback.classList.add("wrong");
     }
+
+    this.dom.feedback.classList.add("visible");
+
+    setTimeout(() => {
+      this.dom.feedback.classList.remove("visible");
+    }, 1500);
+
     this.dom.guessInput.value = "";
 
     if (this.remainingQuestions.length > 0) {
@@ -82,6 +112,12 @@ class GeoGuesserGame {
     } else {
       this.endGame();
     }
+  }
+  countryReturnAnswer(str) {
+    return str
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
   askNextQuestion() {
     const index = Math.floor(Math.random() * this.remainingQuestions.length);
@@ -123,7 +159,6 @@ class GeoGuesserGame {
     this.dom.yourScoreEnding.textContent = `Your score: ${this.score}`;
     this.dom.endingFrame.style.display = "block";
     this.dom.highScores.style.display = "block";
-    this.dom.questionBox.style.display = "none";
     this.dom.guessBox.style.display = "none";
   }
   //local storage so we dont lose high scores on reload

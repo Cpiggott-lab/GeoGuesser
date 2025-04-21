@@ -214,3 +214,7 @@ clearInterval(timer);
 
 //just for testing, adding in the countries one by one in the browser.
 // window.game = new GeoGuesserGame(countryCoordinates);
+
+Learning mode for differnet continents, no timer. just repearing through the list until it is correct.
+
+Speed testing.

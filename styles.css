@@ -46,6 +46,40 @@ button:hover {
   transform: translateX(-50%);
   text-align: center;
 }
+#player-name-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#player-name-box label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+#player-name-box input[type="text"] {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  width: 100%;
+  max-width: 300px;
+  background-color: paleturquoise;
+}
+#instruction-card {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 530px;
+  height: 270px;
+}
 #guess-box {
   display: none;
   position: fixed;
@@ -66,31 +100,6 @@ button:hover {
   border-radius: 10px;
   background-color: paleturquoise;
 }
-#player-name-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-#player-name-box label {
-  display: block;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-#player-name-box input[type="text"] {
-  padding: 8px 12px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  width: 100%;
-  max-width: 300px;
-  background-color: paleturquoise;
-}
 #question-box {
   position: absolute;
   display: none;
@@ -106,7 +115,32 @@ button:hover {
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid yellowgreen;
+  border-top: 10px solid red;
+}
+#feedback {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 200px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+#feedback.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.correct {
+  color: white;
+  background-color: green;
+}
+.wrong {
+  color: white;
+  background-color: red;
 }
 #high-scores {
   display: none;
