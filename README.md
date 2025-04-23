@@ -1,5 +1,7 @@
 # GeoGuesser
 
+Live version: https://cpiggott-lab.github.io/GeoGuesser/
+
 A browser-based game made to help people work on their **memory recall**, **typing speed**, and most importantly — **geography**.
 
 In today’s world, it’s all too easy to rely on Google or AI as a second brain. As a father, that realization hit a little harder. I wanted something simple, clean, and fun — a way to challenge focus and knowledge without distractions.
