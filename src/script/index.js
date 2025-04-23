@@ -17,7 +17,6 @@ class GeoGuesserGame {
       restartButton: document.getElementById("restart-button"),
       questionBox: document.getElementById("question-box"),
       mapImage: document.getElementById("map-image"),
-
       guessBox: document.getElementById("guess-box"),
       title: document.getElementById("geoguesser-title"),
       timer: document.getElementById("timer"),
@@ -69,7 +68,6 @@ class GeoGuesserGame {
 
     this.remainingQuestions = this.shuffleQuestions();
     this.score = 0;
-    this.timeLeft = 29;
     this.dom.guessInput.value = "";
 
     this.startCountdown();
@@ -143,10 +141,12 @@ class GeoGuesserGame {
 
     const playerName = this.dom.nameInput.value.trim() || "Player";
     const newEntry = { name: playerName, score: this.score };
+    //converting the string to an array
     const scores = JSON.parse(localStorage.getItem("highScores")) || [];
     scores.push(newEntry);
     scores.sort((a, b) => b.score - a.score);
     const topScores = scores.slice(0, 5);
+    //converting the array to a string to actually show it
     localStorage.setItem("highScores", JSON.stringify(topScores));
 
     this.dom.highScoresList.innerHTML = "";
@@ -162,7 +162,9 @@ class GeoGuesserGame {
     this.dom.guessBox.style.display = "none";
   }
   //local storage so we dont lose high scores on reload
+  // also localStorage only saves strings so have
   showStoredHighScores() {
+    //to iterate over the localStorage had to turn it back into an array
     const scores = JSON.parse(localStorage.getItem("highScores")) || [];
     this.dom.highScoresList.innerHTML = "";
     scores.forEach((entry, index) => {
@@ -179,6 +181,8 @@ class GeoGuesserGame {
       const seconds = this.timeLeft % 60;
       this.dom.timer.textContent = `${minutes}:${
         seconds < 10 ? "0" : ""
+        // something < anotherThing ? "do this" :else: "do something else"
+        // something && "do this"
       }${seconds}`;
       this.timeLeft--;
 
